@@ -31,9 +31,8 @@
     .soon { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--tinta); font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 9px 18px; }
     /* Libro a marcador pasando una hoja, en vez del punto azul (Vic, 30 oct 2026): trazo de plumón como los íconos de la app */
     .libro { width: 24px; height: 18px; flex: none; overflow: visible; }
-    .libro .pasa { transform-box: view-box; transform-origin: 20px 16px; animation: pasar 2.8s cubic-bezier(.5, .05, .35, 1) infinite; }
-    @keyframes pasar { 0%, 22% { transform: scaleX(1); opacity: 1; } 72%, 86% { transform: scaleX(-1); opacity: 1; } 100% { transform: scaleX(-1); opacity: 0; } }
-    @media (prefers-reduced-motion: reduce) { .libro .pasa { animation: none; } }
+    /* la hoja se mueve con la animación SVG de adentro (se dobla como papel, Vic 30 oct 2026) */
+    @media (prefers-reduced-motion: reduce) { .libro .pasa { display: none; } }
     .lema { margin-top: 18px; font-size: 15px; color: var(--suave); letter-spacing: .3px; }
     .links { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .links a { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta); text-decoration: none; font-weight: 600; font-size: 14px; border: 1.5px solid var(--tinta); padding: 11px 20px; }
@@ -54,11 +53,34 @@
           <path d="M20 7 C15 4.5 9 4.5 4 6 V25 C9 23.5 15 23.5 20 26 Z M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26" />
           <path d="M8 10.5 H16 M8 14.5 H16 M8 18.5 H13.5 M24 10.5 H32 M24 14.5 H32 M24 18.5 H29.5" />
         </g>
+        <!-- La hoja se dobla como papel: se levanta curvada desde la esquina, pasa por el lomo y cae suave a la izquierda
+             (animación SVG, sin JavaScript; los mismos puntos en cada paso para que se mueva de forma continua) -->
         <g class="pasa">
-          <path fill="#f6f3ec" d="M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26 Z" />
-          <g fill="none" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
-            <path d="M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26" />
-            <path d="M24 10.5 H32 M24 14.5 H32 M24 18.5 H29.5" />
+          <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;0" keyTimes="0;.9;1" />
+          <g fill="#f6f3ec" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
+            <!-- Primero se levanta la esquina, la hoja se arquea, pasa por el lomo, baja doblada y se asienta -->
+            <path d="M20 7 C25 4.5 31 4.5 36 6 L36 25 C31 23.5 25 23.5 20 26 Z">
+              <animate attributeName="d" dur="3s" repeatCount="indefinite" calcMode="spline"
+                keyTimes="0;.16;.26;.35;.43;.5;.58;.67;.72;1"
+                keySplines="0 0 1 1;.5 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 1 1;0 0 .5 1;.3 0 .7 1"
+                values="M20 7 C25 4.5 31 4.5 36 6 L36 25 C31 23.5 25 23.5 20 26 Z;
+                        M20 7 C25 4.5 31 4.5 36 6 L36 25 C31 23.5 25 23.5 20 26 Z;
+                        M20 7 C24.5 4 30 2.8 34.5 3.6 L35 22.5 C30.5 22.3 25 23 20 26 Z;
+                        M20 7 C23.5 3 28 1.2 31.5 1.4 L30 20.5 C27 21 23.5 22.8 20 26 Z;
+                        M20 7 C21 2.8 22.5 0.6 24 0.2 L22.6 19.6 C22 21.5 21 23.6 20 26 Z;
+                        M20 7 C18.5 2.8 16.5 0.8 14.5 0.6 L15.5 20 C17 21 18.5 23.2 20 26 Z;
+                        M20 7 C16.5 3 12 1.6 8 2.2 L9.5 21.4 C13 21.4 17 23 20 26 Z;
+                        M20 7 C15 4.9 9 4.9 4 6.4 L4 25.4 C9 23.9 15 23.9 20 26 Z;
+                        M20 7 C15 4.5 9 4.5 4 6 L4 25 C9 23.5 15 23.5 20 26 Z;
+                        M20 7 C15 4.5 9 4.5 4 6 L4 25 C9 23.5 15 23.5 20 26 Z" />
+            </path>
+            <!-- Las líneas del texto: se van al levantarse la hoja y vuelven solo cuando ya cayó (Vic, 30 oct 2026) -->
+            <path fill="none" d="M24 10.5 L32 10.5 M24 14.5 L32 14.5 M24 18.5 L29.5 18.5">
+              <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;0;0;1;1" keyTimes="0;.17;.23;.74;.82;1" />
+              <animate attributeName="d" dur="3s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;.5"
+                values="M24 10.5 L32 10.5 M24 14.5 L32 14.5 M24 18.5 L29.5 18.5;
+                        M8 10.5 L16 10.5 M8 14.5 L16 14.5 M10.5 18.5 L16 18.5" />
+            </path>
           </g>
         </g>
       </svg>
