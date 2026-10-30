@@ -29,9 +29,11 @@
     .logo { width: min(70vw, 380px); height: auto; color: var(--tinta); }
     .logo .logo-ex { fill: color-mix(in srgb, currentColor 93%, #1f8fdc); }   /* la ex teñida por el resaltador */
     .soon { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--tinta); font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 9px 18px; }
-    .soon::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--azul); animation: tinta 1.6s ease-in-out infinite; }
-    @keyframes tinta { 50% { opacity: .25; } }
-    @media (prefers-reduced-motion: reduce) { .soon::before { animation: none; } }
+    /* Libro a marcador pasando una hoja, en vez del punto azul (Vic, 30 oct 2026): trazo de plumón como los íconos de la app */
+    .libro { width: 24px; height: 18px; flex: none; overflow: visible; }
+    .libro .pasa { transform-box: view-box; transform-origin: 20px 16px; animation: pasar 2.8s cubic-bezier(.5, .05, .35, 1) infinite; }
+    @keyframes pasar { 0%, 22% { transform: scaleX(1); opacity: 1; } 72%, 86% { transform: scaleX(-1); opacity: 1; } 100% { transform: scaleX(-1); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { .libro .pasa { animation: none; } }
     .lema { margin-top: 18px; font-size: 15px; color: var(--suave); letter-spacing: .3px; }
     .links { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
     .links a { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta); text-decoration: none; font-weight: 600; font-size: 14px; border: 1.5px solid var(--tinta); padding: 11px 20px; }
@@ -44,7 +46,24 @@
   <main>
     <svg class="logo" viewBox="-15 -464 1801 574" role="img" aria-label="REEX" xmlns="http://www.w3.org/2000/svg"><path fill="#1f8fdc" fill-opacity=".3" d="M817.0 -461.8 L920.6 -472.1 L1024.2 -472.6 L1127.8 -482.9 L1231.4 -480.8 L1335.0 -490.2 L1438.6 -490.1 L1542.2 -497.4 L1645.8 -500.1 L1749.3 -506.8 L1747.8 -399.9 L1746.0 -292.9 L1758.5 -186.0 L1758.9 -79.1 L1749.3 27.8 L1645.8 28.3 L1542.2 34.5 L1438.6 37.4 L1335.0 52.4 L1231.4 52.3 L1127.8 64.0 L1024.2 63.9 L920.6 65.3 L817.0 74.9 L819.3 -32.5 L814.8 -139.8 L807.6 -247.1 L818.4 -354.4 Z"/><path fill="#1f8fdc" fill-opacity=".3" d="M984.8 -444.4 L1057.3 -446.4 L1129.9 -455.8 L1202.4 -457.5 L1274.9 -460.9 L1347.4 -469.3 L1419.9 -471.8 L1492.4 -478.9 L1564.9 -481.8 L1637.5 -483.9 L1641.9 -359.6 L1639.1 -235.3 L1644.1 -111.0 L1637.5 13.4 L1564.9 24.3 L1492.4 29.2 L1419.9 27.8 L1347.4 36.5 L1274.9 36.5 L1202.4 40.0 L1129.9 52.0 L1057.3 49.4 L984.8 56.5 L979.7 -68.7 L986.9 -194.0 L985.7 -319.2 Z"/><path fill="currentColor" d="M283.2 0L22.5 0L19.5-42.0L80.1-57.6Q81.1-61.5 82.0-74.2Q83.0-86.9 84.0-107.9Q85.0-128.9 85.0-157.2L85.0-157.2L85.9-231.4Q85.9-261.7 84.0-287.6Q82.0-313.5 77.1-335.9L77.1-335.9L14.6-349.6L14.6-389.6L171.9-431.6L193.4-416.0L189.5-337.9L192.4-336.9Q220.7-391.6 250-411.1Q279.3-430.7 308.6-430.7L308.6-430.7Q334.0-430.7 352.1-417.0Q370.1-403.3 370.1-375L370.1-375Q370.1-346.7 350.6-331.1Q331.1-315.4 303.7-315.4L303.7-315.4Q282.2-315.4 264.6-323.2Q247.1-331.1 227.5-349.6L227.5-349.6L251.0-346.7Q235.4-335.0 220.7-316.9Q206.1-298.8 194.3-274.4L194.3-274.4L195.3-193.4Q196.3-161.1 197.3-133.3Q198.2-105.5 199.2-85.4Q200.2-65.4 201.2-57.6L201.2-57.6L286.1-43.9L283.2 0ZM613.8 7.8L613.8 7.8Q553.3 7.8 504.9-19.5Q456.6-46.9 429.3-95.2Q401.9-143.6 401.9-206.1L401.9-206.1Q401.9-274.4 432.2-325.7Q462.5-377.0 511.3-405.8Q560.1-434.6 615.8-433.6L615.8-433.6Q700.8-432.6 745.2-379.9Q789.6-327.1 789.6-242.2L789.6-242.2L789.6-220.7L500.6-220.7L500.6-269.5L704.7-269.5L691.0-249.0L691.0-278.3Q691.0-327.1 669.0-355.5Q647.0-383.8 608.0-383.8L608.0-383.8Q582.6-383.8 561.1-369.1Q539.6-354.5 526.9-325.2Q514.2-295.9 514.2-252.0L514.2-252.0L514.2-234.4Q514.2-162.1 551.8-119.1Q589.4-76.2 651.9-76.2L651.9-76.2Q685.1-76.2 712.0-88.4Q738.8-100.6 765.2-130.9L765.2-130.9L793.5-105.5Q766.2-48.8 718.8-20.5Q671.5 7.8 613.8 7.8Z"/><path class="logo-ex" fill="currentColor" d="M1050.9 7.8L1050.9 7.8Q990.4 7.8 942.0-19.5Q893.7-46.9 866.3-95.2Q839-143.6 839-206.1L839-206.1Q839-274.4 869.3-325.7Q899.5-377.0 948.4-405.8Q997.2-434.6 1052.9-433.6L1052.9-433.6Q1137.8-432.6 1182.3-379.9Q1226.7-327.1 1226.7-242.2L1226.7-242.2L1226.7-220.7L937.6-220.7L937.6-269.5L1141.7-269.5L1128.1-249.0L1128.1-278.3Q1128.1-327.1 1106.1-355.5Q1084.1-383.8 1045.1-383.8L1045.1-383.8Q1019.7-383.8 998.2-369.1Q976.7-354.5 964-325.2Q951.3-295.9 951.3-252.0L951.3-252.0L951.3-234.4Q951.3-162.1 988.9-119.1Q1026.5-76.2 1089-76.2L1089-76.2Q1122.2-76.2 1149.1-88.4Q1175.9-100.6 1202.3-130.9L1202.3-130.9L1230.6-105.5Q1203.3-48.8 1155.9-20.5Q1108.5 7.8 1050.9 7.8ZM1723.3-42.0L1720.4 0L1503.6 0L1500.7-42.0L1546.6-57.6L1458.7-172.9L1428.4-210.9L1306.4-368.2L1260.5-383.8L1263.4-425.8L1476.3-425.8L1479.2-383.8L1438.2-368.2L1508.5-276.4L1538.8-236.3L1677.4-57.6L1723.3-42.0ZM1508.5-276.4L1580.8-368.2L1539.8-383.8L1542.7-425.8L1696-425.8L1698.9-383.8L1653.0-368.2L1538.8-236.3L1458.7-172.9L1375.7-57.6L1421.6-42.0L1418.7 0L1259.5 0L1256.5-42.0L1302.4-57.6L1428.4-210.9L1508.5-276.4Z"/></svg>
     <p class="lema">Your Reading Experience</p>
-    <div class="soon">Coming soon</div>
+    <div class="soon">
+      <svg class="libro" viewBox="0 0 40 30" aria-hidden="true">
+        <defs><filter id="mano" filterUnits="userSpaceOnUse" x="-4" y="-4" width="48" height="38"><feTurbulence type="fractalNoise" baseFrequency="0.6" seed="4" /><feDisplacementMap in="SourceGraphic" scale=".9" /></filter></defs>
+        <path fill="#1f8fdc" fill-opacity=".55" d="M6.6 12.2 L17.4 11.9 L17.6 16.9 L6.8 17.1 Z" />
+        <g fill="none" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
+          <path d="M20 7 C15 4.5 9 4.5 4 6 V25 C9 23.5 15 23.5 20 26 Z M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26" />
+          <path d="M8 10.5 H16 M8 14.5 H16 M8 18.5 H13.5 M24 10.5 H32 M24 14.5 H32 M24 18.5 H29.5" />
+        </g>
+        <g class="pasa">
+          <path fill="#f6f3ec" d="M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26 Z" />
+          <g fill="none" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
+            <path d="M20 7 C25 4.5 31 4.5 36 6 V25 C31 23.5 25 23.5 20 26" />
+            <path d="M24 10.5 H32 M24 14.5 H32 M24 18.5 H29.5" />
+          </g>
+        </g>
+      </svg>
+      Coming soon
+    </div>
     <div class="links">
       <a href="https://instagram.com/reexclub" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 2.2c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.4a4.2 4.2 0 1 1 0 8.4 4.2 4.2 0 0 1 0-8.4zm0 6.9a2.7 2.7 0 1 0 0-5.4 2.7 2.7 0 0 0 0 5.4zm5.3-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
