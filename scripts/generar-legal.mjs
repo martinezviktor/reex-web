@@ -85,7 +85,7 @@ const html = (p) => `<!doctype html>
     nav.docs a { text-decoration: none; }
     nav.docs a:hover { text-decoration: underline; }
     footer { color: var(--suave); font-size: 12px; padding-block: 0 32px; }
-    body { background-image: radial-gradient(#b9d6ef 1.2px, transparent 1.4px); background-size: 22px 22px; }  /* hoja de puntos (Vic, 5 nov 2026) */
+    body { background-image: radial-gradient(#c9c8c3 1.2px, transparent 1.4px); background-size: 22px 22px; }  /* hoja de puntos (Vic, 5 nov 2026) */
   </style>
 </head>
 <body>
