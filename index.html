@@ -8,7 +8,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>REEX — Coming soon</title>
   <meta name="description" content="REEX — Reading Experience. Coming soon.">
-  <meta name="theme-color" content="#f6f3ec">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=8">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=8">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=8">
@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&display=swap" rel="stylesheet">
   <style>
     /* Solo el logo y Coming soon (como veexapp.com): no se muestra nada del producto todavía */
-    :root { --papel: #f6f3ec; --tinta: #20211e; --suave: #75766e; --azul: #1f8fdc; color-scheme: light; }
+    :root { --papel: #ffffff; --tinta: #20211e; --suave: #75766e; --azul: #1f8fdc; color-scheme: light; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body { background: var(--papel); color: var(--tinta); font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
@@ -39,6 +39,7 @@
     .links a:hover { background: var(--tinta); color: var(--papel); }
     .links svg { width: 18px; height: 18px; fill: currentColor; }
     footer { text-align: center; color: var(--suave); font-size: 12px; padding: 24px 16px 32px; }
+    body { background-image: radial-gradient(#b9d6ef 1.2px, transparent 1.4px); background-size: 22px 22px; }  /* hoja de puntos (Vic, 5 nov 2026) */
   </style>
 </head>
 <body>
@@ -57,7 +58,7 @@
              (animación SVG, sin JavaScript; los mismos puntos en cada paso para que se mueva de forma continua) -->
         <g class="pasa">
           <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="1;1;0" keyTimes="0;.9;1" />
-          <g fill="#f6f3ec" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
+          <g fill="#ffffff" stroke="#20211e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#mano)">
             <!-- Primero se levanta la esquina, la hoja se arquea, pasa por el lomo, baja doblada y se asienta -->
             <path d="M20 7 C25 4.5 31 4.5 36 6 L36 25 C31 23.5 25 23.5 20 26 Z">
               <animate attributeName="d" dur="3s" repeatCount="indefinite" calcMode="spline"

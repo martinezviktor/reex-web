@@ -53,7 +53,7 @@ const html = (p) => `<!doctype html>
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>${p.titulo} — REEX</title>
   <meta name="description" content="REEX ${p.titulo}.">
-  <meta name="theme-color" content="#f6f3ec">
+  <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/svg+xml" href="favicon.svg?v=8">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=8">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=8">
@@ -62,7 +62,7 @@ const html = (p) => `<!doctype html>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     /* Estilo Libreta de REEX: papel, tinta, sin recuadros; el azul solo en el logo */
-    :root { --papel: #f6f3ec; --tinta: #20211e; --suave: #75766e; --linea: #d8d3c7; color-scheme: light; }
+    :root { --papel: #ffffff; --tinta: #20211e; --suave: #75766e; --linea: #d8d3c7; color-scheme: light; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--papel); color: var(--tinta); font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; line-height: 1.6; }
     header, main, footer { max-width: 720px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -85,6 +85,7 @@ const html = (p) => `<!doctype html>
     nav.docs a { text-decoration: none; }
     nav.docs a:hover { text-decoration: underline; }
     footer { color: var(--suave); font-size: 12px; padding-block: 0 32px; }
+    body { background-image: radial-gradient(#b9d6ef 1.2px, transparent 1.4px); background-size: 22px 22px; }  /* hoja de puntos (Vic, 5 nov 2026) */
   </style>
 </head>
 <body>
