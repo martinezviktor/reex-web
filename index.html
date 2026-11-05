@@ -28,15 +28,15 @@
     main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 16px 40px; }
     .logo { width: min(70vw, 380px); height: auto; color: var(--tinta); }
     .logo .logo-ex { fill: color-mix(in srgb, currentColor 93%, #1f8fdc); }   /* la ex teñida por el resaltador */
-    .soon { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; border: 1.5px solid var(--tinta); font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 9px 18px; }
+    .soon { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 0 2px 8px; border-bottom: 3px solid #38a8f5; }   /* sin recuadro, con subrayado azul (Vic, 5 nov 2026) */
     /* Libro a marcador pasando una hoja, en vez del punto azul (Vic, 30 oct 2026): trazo de plumón como los íconos de la app */
     .libro { width: 24px; height: 18px; flex: none; overflow: visible; }
     /* la hoja se mueve con la animación SVG de adentro (se dobla como papel, Vic 30 oct 2026) */
     @media (prefers-reduced-motion: reduce) { .libro .pasa { display: none; } }
     .lema { margin-top: 18px; font-size: 15px; color: var(--suave); letter-spacing: .3px; }
     .links { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-    .links a { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta); text-decoration: none; font-weight: 600; font-size: 14px; border: 1.5px solid var(--tinta); padding: 11px 20px; }
-    .links a:hover { background: var(--tinta); color: var(--papel); }
+    .links a { display: inline-flex; align-items: center; gap: 8px; color: var(--tinta); text-decoration: none; font-weight: 600; font-size: 14px; padding: 6px 4px; }   /* sin recuadro (Vic, 5 nov 2026) */
+    .links a:hover { color: var(--azul); }
     .links svg { width: 18px; height: 18px; fill: currentColor; }
     footer { text-align: center; color: var(--suave); font-size: 12px; padding: 24px 16px 32px; }
     body { background-image: radial-gradient(#b9d6ef 1.2px, transparent 1.4px); background-size: 22px 22px; }  /* hoja de puntos (Vic, 5 nov 2026) */
