@@ -29,10 +29,10 @@
        cae justo en una fila de puntos (los puntos están a 11 px de cada fila). Los "top" de abajo corrigen lo que mide cada letra. */
     main { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 176px 16px 44px; }
     .logo { height: 132px; width: auto; max-width: calc(100vw - 32px); color: var(--tinta); position: relative; top: var(--ajuste-logo, 0px); }
-    :root { --ajuste-logo: -7.7px; --ajuste-lema: -5px; --ajuste-soon: -9.5px; --ajuste-links: -5px; --ajuste-pie: -4px; }
+    :root { --ajuste-logo: -7.7px; --ajuste-lema: -5px; --ajuste-soon: 11px; --ajuste-links: -5px; --ajuste-pie: -4px; }
     @media (max-width: 520px) { main { padding-top: 132px; } .logo { height: 88px; } :root { --ajuste-logo: 5.9px; } }
     .logo .logo-ex { fill: color-mix(in srgb, currentColor 93%, #1f8fdc); }   /* la ex teñida por el resaltador */
-    .soon { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; font-size: 12px; line-height: 22px; height: 44px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 0 2px; border-bottom: 3px solid #38a8f5; position: relative; top: var(--ajuste-soon, 0px); }   /* sin recuadro, con subrayado azul (Vic, 5 nov 2026) */
+    .soon { margin-top: 44px; display: inline-flex; align-items: flex-start; gap: 10px; font-size: 12px; line-height: 22px; height: 26px; margin-bottom: 18px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; padding: 0 2px; border-bottom: 3px solid #38a8f5; position: relative; top: var(--ajuste-soon, 0px); }   /* sin recuadro, con subrayado azul (Vic, 5 nov 2026) */
     /* Libro a marcador pasando una hoja, en vez del punto azul (Vic, 30 oct 2026): trazo de plumón como los íconos de la app */
     .libro { width: 24px; height: 18px; flex: none; overflow: visible; }
     /* la hoja se mueve con la animación SVG de adentro (se dobla como papel, Vic 30 oct 2026) */
