@@ -9,13 +9,12 @@ import { pathToFileURL } from 'node:url'
 import { resolve } from 'node:path'
 
 const reex = await import(pathToFileURL(resolve('../reex/src/legalReex.js')).href)
-const veex = await import(pathToFileURL(resolve('../veex/src/legalTextos.js')).href)
 // El mismo logo de la portada (index.html)
 const logo = readFileSync('index.html', 'utf8').match(/<svg class="logo"[\s\S]*?<\/svg>/)[0]
 
 const escapar = (s) => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  .replace(/([a-z]+@veexapp\.com)/g, '<a href="mailto:$1">$1</a>')
+  .replace(/((?:privacy|legal|support)@reexapp.com)/g, '<a href="mailto:$1">$1</a>')
 const seccion = (lista) => lista.map(({ titulo, texto }) => `
       <h3>${escapar(titulo)}</h3>
       <p>${escapar(texto)}</p>`).join('')
@@ -24,12 +23,10 @@ const PAGINAS = [
   {
     archivo: 'privacy.html', titulo: 'Privacy Policy', tituloEs: 'Política de privacidad',
     en: reex.PRIVACIDAD_REEX_EN, es: reex.PRIVACIDAD_REEX_ES,
-    veex: { en: veex.PRIVACIDAD_EN, es: veex.PRIVACIDAD_ES, nombre: 'VEEX Privacy Policy', nombreEs: 'Política de privacidad de VEEX' },
   },
   {
     archivo: 'terms.html', titulo: 'Terms of Use', tituloEs: 'Términos de uso',
     en: reex.TERMINOS_REEX_EN, es: reex.TERMINOS_REEX_ES,
-    veex: { en: veex.TERMINOS_EN, es: veex.TERMINOS_ES, nombre: 'VEEX Terms of Service', nombreEs: 'Términos del servicio de VEEX' },
   },
   {
     archivo: 'delete-account.html', titulo: 'Delete your REEX account', tituloEs: 'Borrar tu cuenta de REEX',
@@ -97,12 +94,12 @@ const html = (p) => `<!doctype html>
     <div class="en">
       <p class="aviso">Draft — under legal review. This document may change before REEX launches.</p>
       <h1>${p.titulo}</h1>
-      <p class="sub">REEX · by Victor Martinez (VEEX), New York · Last updated: ${reex.ACTUALIZADO_REEX}</p>${p.veex ? '\n      <h2>Part 1 · REEX</h2>' : ''}${seccion(p.en)}${parteVeex(p, false)}
+      <p class="sub">REEX · by Victor Martinez, doing business as REEX, New York · Last updated: ${reex.ACTUALIZADO_REEX}</p>${p.veex ? '\n      <h2>Part 1 · REEX</h2>' : ''}${seccion(p.en)}
     </div>
     <div class="es" id="es" lang="es">
       <p class="aviso">Borrador — en revisión legal. Este documento puede cambiar antes del lanzamiento de REEX. Si algo difiere, vale la versión en inglés.</p>
       <h1>${p.tituloEs}</h1>
-      <p class="sub">REEX · de Victor Martinez (VEEX), Nueva York · Última actualización: ${reex.ACTUALIZADO_REEX_ES}</p>${p.veex ? '\n      <h2>Parte 1 · REEX</h2>' : ''}${seccion(p.es)}${parteVeex(p, true)}
+      <p class="sub">REEX · de Victor Martinez, que opera como REEX, Nueva York · Última actualización: ${reex.ACTUALIZADO_REEX_ES}</p>${p.veex ? '\n      <h2>Parte 1 · REEX</h2>' : ''}${seccion(p.es)}
     </div>
     <nav class="docs" aria-label="Legal">
       <a href="/privacy">Privacy Policy ›</a>
